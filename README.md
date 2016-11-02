@@ -45,6 +45,25 @@
         Start 1: Test_cppunit
     1/1 Test #1: Test_cppunit .....................   Passed    0.00 sec
 
+### Inclusion in a cmake project
+
+     # Project/test/               -> folder with cmake_cppunit files
+     # Project/CMakeLists.txt      -> main project CMakeLists
+     
+     cmake_minimum_required(VERSION 3.3)
+     project(test_include_cpp_unit CXX)
+     # ...
+     ## tests
+     option (UNIT_TEST "Build unit tests" ON)
+     if (UNIT_TEST)
+       enable_testing ()
+       add_subdirectory ( "${CMAKE_SOURCE_DIR}/test" )
+     else()
+       message("Skip unit tests...")
+     endif()
+     # ...
+
+     
 
 ## Based on 
 
