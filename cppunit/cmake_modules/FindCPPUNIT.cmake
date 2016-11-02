@@ -26,7 +26,7 @@ FIND_PATH(CPPUNIT_INCLUDE_DIR
 )
 
 # With Win32, important to have both
-IF(WIN32 AND NOT MSYS )
+IF(${CMAKE_GENERATOR} MATCHES "Visual Studio")
   FIND_LIBRARY(CPPUNIT_LIBRARY cppunit
                ${CPPUNIT_INCLUDE_DIR}/../lib
                /usr/local/lib
@@ -38,7 +38,7 @@ IF(WIN32 AND NOT MSYS )
                /usr/local/lib
                /usr/lib
 	       ${CMAKE_BINARY_DIR}/cppunit-src/lib/Debug)
-ELSE(WIN32 AND NOT MSYS)
+ELSE(${CMAKE_GENERATOR} MATCHES "Visual Studio")
   # On unix system, debug and release have the same name
   FIND_LIBRARY(CPPUNIT_LIBRARY cppunit
                ${CPPUNIT_INCLUDE_DIR}/../lib
@@ -52,7 +52,7 @@ ELSE(WIN32 AND NOT MSYS)
                /usr/lib
 	       ${CMAKE_BINARY_DIR}/cppunit-src/lib)
 
-ENDIF(WIN32 AND NOT MSYS)
+ENDIF(${CMAKE_GENERATOR} MATCHES "Visual Studio")
 
 IF(CPPUNIT_INCLUDE_DIR)
   IF(CPPUNIT_LIBRARY)
