@@ -5,9 +5,10 @@ rem  https://docs.microsoft.com/en-us/cpp/build/building-on-the-command-line?vie
 
 set vs_ok=0
 set vsdir="%programfiles(x86)%\Microsoft Visual Studio\2019\Community\Common7\Tools\"
-set vscl=%vsdir%VsDevCmd.bat
+set vscl=%vsdir%VsMSBuildCmd.bat
 set dir="%~dp0%"
 set vs_version="?"
+set msbuild=msbuild
 
 if exist %vscl% (
     echo using Visual Studio 2019 
@@ -16,7 +17,9 @@ if exist %vscl% (
     set vs_version="2019"
     rem set VSCMD_DEBUG=1
     cd "%programfiles(x86)%\Microsoft Visual Studio\2019\Community\Common7\Tools\"
-    call VsDevCmd.bat
+    call VsMSBuildCmd.bat
+    
+    set msbuild="%programfiles(x86)%\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\msbuild"
     cd %dir%
     cd ..
 ) 

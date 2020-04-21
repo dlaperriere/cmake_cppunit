@@ -18,8 +18,9 @@ cmake --version
 cmake ..
 
 echo "---------------------------------------------------"
-msbuild /p:Configuration=Release UnitTest.sln /v:quiet
-msbuild /p:Configuration=Debug UnitTest.sln /v:quiet
+%msbuild% /version
+%msbuild% /p:Configuration=Release UnitTest.sln /v:quiet
+%msbuild% /p:Configuration=Debug UnitTest.sln /v:quiet
 
 cd ..
 )
